@@ -16,7 +16,7 @@ public sealed partial class SettingPage : Page
     private readonly List<string> _availableLanguages = ["en‑US", "zh‑CN"];
     private readonly List<string> _editionOptions = ["java", "bedrock"];
 
-    public SettingPage1()
+    public SettingPage()
     {
         InitializeComponent();
         Loaded += Page_Loaded;
