@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page x:Class="McNbtViewerGUI.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="主页"
+                   FontSize="17"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   Margin="24,0,0,0"/>
+
+        <StackPanel Grid.Row="1" Margin="24,12,24,24">
+            <TextBlock Text="欢迎使用 Minecraft NBT 编辑器" FontSize="24" Margin="0,0,0,20"/>
+
+            <Button HorizontalAlignment="Left"
+                    Margin="0,0,0,24"
+                    Padding="12,8"
+                    Click="BtnOpenNbtSelect_Click">
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon Glyph="&#xE8E5;" Margin="0,0,8,0"/>
+                    <TextBlock Text="打开一个新的 NBT 文件"/>
+                </StackPanel>
+            </Button>
+            <Button HorizontalAlignment="Left"
+                    Margin="0,0,0,24"
+                    Padding="12,8"
+                    Click="BtnSaveNbtSelect_Click">
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon Glyph="&#xE74E;" Margin="0,0,8,0"/>
+                    <TextBlock Text="打开一个新的 NBT 文件"/>
+                </StackPanel>
+            </Button>
+
+            <TextBlock Text="最近打开" FontSize="12" Margin="0,0,0,8"/>
+            <ListBox Width="320" MaxHeight="320" HorizontalAlignment="Left">
+                <ListBoxItem>123.dat</ListBoxItem>
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</Page>
