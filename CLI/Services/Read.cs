@@ -1,7 +1,7 @@
 ﻿using SharpNBT;
 using CLI.Library;
 
-namespace CLI.Services
+namespace McNbtViewerCLI.Services
 {
     internal class Read
     {

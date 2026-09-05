@@ -1,4 +1,4 @@
-﻿namespace CLI.Library;
+﻿namespace McNbtViewerCLI.Library;
 
 public static class Helper
 {

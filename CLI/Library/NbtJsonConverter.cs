@@ -1,7 +1,7 @@
 ﻿using SharpNBT;
 using System.Text.Json;
 
-namespace CLI.Library
+namespace McNbtViewerCLI.Library
 {
     public static class NbtJsonConverter
     {

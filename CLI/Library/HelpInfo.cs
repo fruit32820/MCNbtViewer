@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CLI.Library
+namespace McNbtViewerCLI.Library
 {
     public class HelpInfo
     {

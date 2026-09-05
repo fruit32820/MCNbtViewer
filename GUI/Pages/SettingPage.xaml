@@ -1,0 +1,75 @@
+<Page x:Class="McNbtViewerGUI.SettingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      xmlns:toolkit="using:CommunityToolkit.WinUI.Controls">
+
+    <Page.Resources>
+        <Style TargetType="toolkit:SettingsCard">
+            <Setter Property="CornerRadius" Value="12"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="设置" FontSize="17" Grid.Row="0" VerticalAlignment="Center" Margin="24,0,0,0"/>
+
+        <ScrollViewer Padding="24" Grid.Row="1">
+            <StackPanel Spacing="16">
+                <!--应用语言-->
+                <StackPanel>
+                    <toolkit:SettingsCard x:Name="ScLanguage"
+                                          Header="应用语言"
+                                          Description="修改界面显示语言">
+                        <StackPanel>
+                            <ComboBox x:Name="CbLanguage"
+                                      SelectionChanged="CbLanguage_SelectionChanged"
+                                      PlaceholderText="请选择语言"/>
+                        </StackPanel>
+                    </toolkit:SettingsCard>
+                    <muxc:InfoBar x:Name="InfoBarLangRestart"
+                                  Severity="Informational"
+                                  IsClosable="False"
+                                  Margin="0,0,0,0"
+                                  CornerRadius="0,0,12,12"
+                                  Background="#0DFFFFFF">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="语言修改需要重启应用后生效。" Grid.Column="0" VerticalAlignment="Center"/>
+                            <Button Content="立即重启" Grid.Column="1" Click="BtnRestartApp_Click" Margin="12,0,0,0"/>
+                        </Grid>
+                    </muxc:InfoBar>
+                </StackPanel>
+
+                <!--CLI路径（删除TextChanged，增加应用按钮）-->
+                <toolkit:SettingsCard Header="CLI可执行文件路径"
+                                      Description="MCNbtCli.exe 的完整路径">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <TextBox x:Name="TbCliPath" MinWidth="320"/>
+                        <Button Content="浏览" Click="BtnBrowseCli_Click"/>
+                        <Button Content="应用" Click="BtnApplyCliPath_Click"/>
+                    </StackPanel>
+                </toolkit:SettingsCard>
+
+                <!--默认NBT版本-->
+                <toolkit:SettingsCard Header="默认NBT版本"
+                                      Description="打开NBT文件使用的默认端序模式">
+                    <ComboBox x:Name="CbDefaultEdition"
+                              SelectionChanged="CbDefaultEdition_SelectionChanged"/>
+                </toolkit:SettingsCard>
+
+                <Button x:Name="BtnResetSettings"
+                        Content="重置全部设置"
+                        Click="BtnResetSettings_Click"
+                        HorizontalAlignment="Left"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

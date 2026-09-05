@@ -2,7 +2,7 @@
 using SharpNBT;
 using System.Text.Json;
 
-namespace CLI.Services
+namespace McNbtViewerCLI.Services
 {
     internal class Write
     {

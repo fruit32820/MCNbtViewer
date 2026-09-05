@@ -1,6 +1,6 @@
 ﻿using CLI.Library;
 
-namespace CLI.Services
+namespace McNbtViewerCLI.Services
 {
     public class Help()
     {

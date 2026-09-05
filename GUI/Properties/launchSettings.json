@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "GUI": {
+      "commandName": "Project",
+      "hotReloadEnabled": true,
+      "remoteDebugEnabled": false
+    }
+  }
+}

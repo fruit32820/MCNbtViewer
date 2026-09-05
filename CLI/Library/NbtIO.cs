@@ -1,7 +1,7 @@
 ﻿using SharpNBT;
 using System.Buffers.Binary;
 
-namespace CLI.Library
+namespace McNbtViewerCLI.Library
 {
     public enum McEdition
     {

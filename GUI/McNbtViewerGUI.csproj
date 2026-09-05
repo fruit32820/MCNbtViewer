@@ -1,0 +1,68 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+		<RootNamespace>McNbtViewerGUI</RootNamespace>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<Platforms>x86;x64</Platforms>
+		<RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
+		<UseWinUI>true</UseWinUI>
+		<WinUISDKReferences>true</WinUISDKReferences>
+		<Nullable>enable</Nullable>
+		<WindowsPackageType>None</WindowsPackageType>
+	</PropertyGroup>
+
+	<!-- ========== 仅Release发布开启自包含，Debug框架依赖 ========== -->
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+		<SelfContained>true</SelfContained>
+		<PublishReadyToRun>False</PublishReadyToRun>
+		<PublishTrimmed>False</PublishTrimmed>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<!-- NuGet包引用 -->
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="8.2.251219" />
+		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.28000.2526" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="2.4.0" />
+	</ItemGroup>
+
+	<!-- 页面资源 -->
+	<ItemGroup>
+		<None Remove="Pages\HomePage.xaml" />
+		<None Remove="Pages\NbtFileSelectPage.xaml" />
+		<None Remove="Pages\EditPage.xaml" />
+		<None Remove="Pages\ReadPage.xaml" />
+		<None Remove="Pages\WritePage.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Manifest Include="$(ApplicationManifest)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Window\" />
+		
+		<ApplicationDefinition Update="App.xaml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</ApplicationDefinition>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Update="Pages\SettingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	</ItemGroup>
+
+	<Target Name="_CopyXbfPriToPublish" AfterTargets="Publish">
+		<ItemGroup>
+			<_XbfPriFiles Include="$(OutDir)*.xbf;$(OutDir)*.pri" />
+		</ItemGroup>
+		<Copy SourceFiles="@(_XbfPriFiles)" DestinationFolder="$(PublishDir)" SkipUnchangedFiles="true" />
+	</Target>
+</Project>
